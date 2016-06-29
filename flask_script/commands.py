@@ -326,8 +326,8 @@ class Shell(Command):
         if not no_bpython:
             # Try BPython
             try:
-                from bpython import embed
-                embed(banner=self.banner, locals_=context)
+                from bpython.cli import main
+                main(['-i', '-q'], locals_=context, banner=self.banner)
                 return
             except ImportError:
                 pass
